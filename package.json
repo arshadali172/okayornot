@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "rm staff-notes-compiler.zip && zip -r staff-notes-compiler.zip index.html mammoth.browser.js moment.js docx.js FileSaver.js pure-min.css normal-400.woff2",
-    "lint": "npx prettier --write index.html && eslint --fix index.html "
+    "lint": "npx prettier --write *.html && eslint --fix *.html "
   },
   "repository": {
     "type": "git",

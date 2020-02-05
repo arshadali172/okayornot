@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OKAY / NOT?</title>
+    <meta charset="utf-8" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      background-color: black;
+      color: white;
+      padding: 20px 50px;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      margin: 0;
+      overflow-x: hidden;
+      height: 100vh;
+      -webkit-transition: opacity 2s ease-in;
+      -moz-transition: opacity 2s ease-in;
+      -o-transition: opacity 2s ease-in;
+      -ms-transition: opacity 2s ease-in;
+      transition: opacity 2s ease-in;
+    }
+
+    section {
+      display: flex;
+      justify-content: center;
+    }
+
+    .center-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80%;
+      letter-spacing: 0.1em;
+      padding: 0 10%;
+    }
+
+    .okay-or-not {
+      color: grey;
+    }
+
+    .left-header-text {
+      width: 20%;
+      font-size: 3.5em;
+      font-weight: 600;
+    }
+
+    .right-header-text {
+      font-weight: 300;
+      font-size: 2.5em;
+      letter-spacing: 0.1em;
+      padding-bottom: 10px;
+      border-bottom: 8px solid white;
+    }
+    h1 {
+      font-size: 5em;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 2.2em;
+      line-height: 2em;
+      font-weight: 400;
+    }
+    .options-to-select {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+    .options-to-select > div {
+      border: 1px solid black;
+      font-size: 2em;
+      width: 33%;
+      text-align: center;
+      line-height: 4em;
+    }
+
+    .options-to-select > div:active {
+      background-color: #d8d8d8;
+    }
+
+    h4 {
+      font-size: 1.8em;
+      font-weight: 400;
+    }
+
+    button {
+      font-family: inherit;
+      border-radius: 50px;
+      width: 90%;
+      color: white;
+      background-color: black;
+      height: 100px;
+      font-size: 3em;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .main-content {
+      padding: 5%;
+    }
+  </style>
+  <body>
+    <header>
+      <p class="left-header-text">
+        OKAY / NOT?
+      </p>
+      <p class="right-header-text">
+        <a href="https://go.gov.sg/not-okay">SUBMIT YOUR STORY</a>
+      </p>
+    </header>
+    <div class="main-content">
+      <h1>
+        Almost done!
+      </h1>
+      <h3>
+        To view the results, please provide us with some information so we can
+        aggregate the responses.
+      </h3>
+      <h4>
+        Age
+      </h4>
+      <section class="options-to-select">
+        <div class="turn-grey-on-select">
+          < 18
+        </div>
+        <div class="turn-grey-on-select">
+          18-29
+        </div>
+        <div class="turn-grey-on-select">
+          30-39
+        </div>
+        <div class="turn-grey-on-select">
+          40-49
+        </div>
+        <div class="turn-grey-on-select">
+          50-59
+        </div>
+        <div class="turn-grey-on-select">
+          > 60
+        </div>
+      </section>
+      <h4>
+        Race
+      </h4>
+      <section class="options-to-select">
+        <div class="turn-grey-on-select">
+          Chinese
+        </div>
+        <div class="turn-grey-on-select">
+          Malay
+        </div>
+        <div class="turn-grey-on-select">
+          Indian
+        </div>
+        <div class="turn-grey-on-select">
+          Others
+        </div>
+      </section>
+      <h4>
+        Housing Type
+      </h4>
+      <section class="options-to-select">
+        <div class="turn-grey-on-select">
+          1 room HDB
+        </div>
+        <div class="turn-grey-on-select">
+          2-3 room HDB
+        </div>
+        <div class="turn-grey-on-select">
+          4-5 room HDB
+        </div>
+        <div class="turn-grey-on-select">
+          Executive Condo
+        </div>
+        <div class="turn-grey-on-select">
+          Condo
+        </div>
+        <div class="turn-grey-on-select">
+          Landed
+        </div>
+      </section>
+      <div style="text-align: center; padding-top: 100px;">
+        <button>Submit and View Results</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    var els = document.getElementsByClassName("turn-grey-on-select");
+
+    for (var i = 0; i < els.length; ++i) {
+      els[i].addEventListener("click", active, true);
+    }
+    function active() {
+      console.log(this.style.backgroundColor);
+      if (this.style.backgroundColor == "rgb(216, 216, 216)") {
+        this.style.backgroundColor = "";
+      } else {
+        this.style.backgroundColor = "#d8d8d8";
+      }
+    }
+  </script>
+</html>
