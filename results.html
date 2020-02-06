@@ -12,9 +12,24 @@
       justify-content: space-between;
       background-color: black;
       color: white;
-      padding: 20px 50px;
+      padding: 0 50px;
       align-items: center;
       font-weight: 700;
+    }
+
+    .left-header-text {
+      width: 20%;
+      font-size: 3.5em;
+      font-weight: 600;
+      margin: 30px 0;
+    }
+
+    .right-header-text {
+      font-weight: 300;
+      font-size: 2.5em;
+      letter-spacing: 0.1em;
+      padding-bottom: 10px;
+      border-bottom: 8px solid white;
     }
 
     a {
@@ -49,19 +64,6 @@
       color: grey;
     }
 
-    .left-header-text {
-      width: 20%;
-      font-size: 3.5em;
-      font-weight: 600;
-    }
-
-    .right-header-text {
-      font-weight: 300;
-      font-size: 2.5em;
-      letter-spacing: 0.1em;
-      padding-bottom: 10px;
-      border-bottom: 8px solid white;
-    }
     .options-to-select {
       display: flex;
       flex-wrap: wrap;
@@ -121,7 +123,7 @@
   </style>
   <body>
     <header>
-      <p class="left-header-text">
+      <p class="left-header-text" onclick="window.location.href='home.html'">
         OKAY / NOT?
       </p>
       <p class="right-header-text">
@@ -129,16 +131,28 @@
       </p>
     </header>
     <div class="main-content">
-      <div
-        style="font-size: 50px; font-weight: 500; padding-top: 50px; padding-bottom: 20px;"
+      <h1
+        style="
+      font-size: 6em;
+      font-weight: 600;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    "
       >
         Your Results
-      </div>
+      </h1>
 
-      <div style="font-size: 12px; font-weight: 400; padding-bottom: 40px;">
+      <h3
+        style="
+      font-size: 2.3em;
+      line-height: 2em;
+      font-weight: 400;
+      margin-bottom: 50px;
+      "
+      >
         These results are compared against people who have taken the test, and
         is not definitive.
-      </div>
+      </h3>
 
       <div
         style="font-size: 12px; font-weight: 400; line-height: 80px; font-family: IBM Plex Mono;"
@@ -174,15 +188,31 @@
         </div>
       </div>
 
-      <div
-        style="font-size: 50px; font-weight: 500; padding-top: 100px; padding-bottom: 20px;"
-      >
-        Top 3 Disagreements
+      <div style="padding-top: 100px; padding-bottom: 100px;">
+        <hr style="border: 0.5px solid #d8d8d8;" />
       </div>
 
-      <div style="font-size: 12px; font-weight: 400; padding-bottom: 40px;">
+      <h1
+        style="
+      font-size: 6em;
+      font-weight: 600;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    "
+      >
+        Top 3 Disagreements
+      </h1>
+
+      <h3
+        style="
+      font-size: 2.3em;
+      line-height: 2em;
+      font-weight: 400;
+      margin-bottom: 50px;
+      "
+      >
         These are the statements you differed most from the majority.
-      </div>
+      </h3>
       <div
         style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
       >
@@ -214,7 +244,6 @@
             style="      
         width: 30%;
         text-align: center;
-        color: #C4C4C4;
         border: 1px solid black;"
           >
             okay!
@@ -241,7 +270,6 @@
         >
           <div
             style="width: 30%;
-          color: #C4C4C4;
           text-align: center;
           border: 1px solid black;"
           >
@@ -277,7 +305,6 @@
         >
           <div
             style="width: 30%;
-        color: #C4C4C4;
         text-align: center;
         border: 1px solid black;"
           >
@@ -294,7 +321,7 @@
         </div>
       </div>
 
-      <div style="text-align: center; padding-top: 100px;">
+      <div style="text-align: center; padding-bottom: 50px; padding-top: 50px;">
         <button onclick="window.location.href='index.html'">
           SHARE YOUR STORY
         </button>

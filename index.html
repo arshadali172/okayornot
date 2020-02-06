@@ -17,11 +17,25 @@
       justify-content: space-between;
       background-color: black;
       color: white;
-      padding: 20px 50px;
+      padding: 0 50px;
       align-items: center;
       font-weight: 700;
     }
 
+    .left-header-text {
+      width: 20%;
+      font-size: 3.5em;
+      font-weight: 600;
+      margin: 30px 0;
+    }
+
+    .right-header-text {
+      font-weight: 300;
+      font-size: 2.5em;
+      letter-spacing: 0.1em;
+      padding-bottom: 10px;
+      border-bottom: 8px solid white;
+    }
     a {
       color: white;
       text-decoration: none;
@@ -35,7 +49,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100vh;
       -webkit-transition: opacity 2s ease-in;
       -moz-transition: opacity 2s ease-in;
       -o-transition: opacity 2s ease-in;
@@ -233,32 +246,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 80%;
+      height: 70%;
       letter-spacing: 0.1em;
-      padding: 0 10%;
+      padding: 0 15%;
     }
 
     .okay-or-not {
       color: grey;
-    }
-
-    .left-header-text {
-      width: 20%;
-      font-size: 3.5em;
-      font-weight: 600;
-    }
-
-    .right-header-text {
-      font-weight: 300;
-      font-size: 2.5em;
-      letter-spacing: 0.1em;
-      padding-bottom: 10px;
-      border-bottom: 8px solid white;
+      padding: 0 15%;
+      font-size: 34px;
     }
   </style>
   <body>
     <header>
-      <p class="left-header-text">
+      <p class="left-header-text" onclick="window.location.href='home.html'">
         OKAY / NOT?
       </p>
       <p class="right-header-text">
@@ -266,7 +267,7 @@
       </p>
     </header>
     <section>
-      <div style="width: 80%">
+      <div style="width: 65%">
         <div
           id="stacked-cards-block"
           class="stackedcards stackedcards--animatable init"
@@ -277,6 +278,7 @@
                 "It's better if you stay away from the China/Mainland Chinese,
                 if not later you also catch coronavirus"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -286,6 +288,8 @@
               <div class="center-text">
                 "You really Singaporean meh? You don't look like it"
               </div>
+
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -296,15 +300,16 @@
                 "You're pretty accomplished for a Malay. What did you do
                 different?"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
             </div>
-
             <div class="card-item">
               <div class="center-text">
                 "Chinese-preferred for this job"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -315,6 +320,7 @@
                 "I bet the Nasi Padang stall is charging me more because I'm not
                 Malay"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -325,6 +331,7 @@
                 "Not my fault if the other person take offense when I didn't
                 intend to be racist!"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -334,6 +341,7 @@
               <div class="center-text">
                 "You're not like most Indians I meet"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -344,6 +352,7 @@
                 "My Chinese friends gauge their success by their material
                 wealth"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -354,6 +363,7 @@
                 Speaking in Mandarin when there is a non-Mandarin speaking
                 person present in the group
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -364,6 +374,7 @@
                 "Eating with Malays is usually difficult, cause we need to find
                 Halal food"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -374,6 +385,7 @@
                 "The minority groups are quite sensitive about race. They should
                 just relax"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -384,6 +396,7 @@
                 Speaking in Malay when there is a non-Malay speaking person
                 present in the group
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -394,6 +407,7 @@
                 "We should prioritise translating this brochure into Chinese as
                 it would cost too much to translate this into Tamil and Malay"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -403,6 +417,7 @@
               <div class="center-text">
                 "I don't want my children to marry someone of another race"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
@@ -413,6 +428,7 @@
                 "Because we are a meritocracy, all races have an equal chance of
                 succeeding at life"
               </div>
+              <img src="grey-horizontal-straight-line.png" width="100px">
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
