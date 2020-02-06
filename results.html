@@ -251,7 +251,8 @@
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong id="question-1-your-choice"> okay!</strong>
+          <i>You said: </i>
+          <strong id="question-1-your-choice"></strong>
         </div>
         <div
           style="width: 100%;
@@ -282,7 +283,7 @@
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
           <i>You said: </i>
-          <strong id="question-2-your-choice"> not okay.</strong>
+          <strong id="question-2-your-choice"></strong>
         </div>
         <div
           style="width: 100%;
@@ -314,7 +315,7 @@
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
           <i>You said: </i>
-          <strong id="question-3-your-choice"> not okay.</strong>
+          <strong id="question-3-your-choice"></strong>
         </div>
         <div
           style="width: 100%;
@@ -408,7 +409,6 @@
       );
 
       globalData = answer.data.values[0];
-      console.log(globalData);
 
       const differences = [];
       for (let [index, value] of queryParams) {
@@ -422,6 +422,7 @@
       differences.sort(function(a, b) {
         return b[0] - a[0]; // sort in descending order right now
       });
+      console.log(differences);
 
       const questions = [
         "It's better if you stay away from the Mainland Chinese, if not later you also catch coronavirus",
@@ -447,51 +448,56 @@
       document.getElementById("question-3").innerText =
         questions[differences[2][1]];
 
+      console.log(differences[0][2] == "T");
       document.getElementById("question-1-your-choice").innerText =
-        questions[differences[0][2]] == "T" ? "okay!" : "not okay.";
+        differences[0][2] == "T" ? "okay!" : "not okay.";
       document.getElementById("question-2-your-choice").innerText =
-        questions[differences[1][2]] == "T" ? "okay!" : "not okay.";
+        differences[1][2] == "T" ? "okay!" : "not okay.";
       document.getElementById("question-3-your-choice").innerText =
-        questions[differences[2][2]] == "T" ? "okay!" : "not okay.";
+        differences[2][2] == "T" ? "okay!" : "not okay.";
 
       for (const [question, index] of [
         ["question-1-majority", 0],
         ["question-2-majority", 1],
         ["question-3-majority", 2]
       ]) {
-        console.log(question, index);
         const bar = document.getElementById(question).children;
         if (differences[index][2] == "F") {
           // this means that the user has selected not okay
           // the population has selected okay
+
           // so the surprising information is in the okay percentage, which we must show to the user, and make background properly
 
-          // [0.84, "4", "F"]
+          // differences[index] => [0.84, "4", "F"]
           // majority percentage that said okay, index of question, and what you said (not okay, in this case)
           bar[0].style.width = `${parseInt(
-            (1 - differences[index][0]) * 100
+            (1 - globalData[differences[index][1]]) * 100
           )}%`;
           bar[0].style.color = "lightgrey";
           bar[0].innerText = "not okay.";
 
-          const okayPercentage = `${parseInt(differences[index][0] * 100)}%`;
+          const okayPercentage = `${parseInt(
+            globalData[differences[index][1]] * 100
+          )}%`;
           bar[1].style.width = okayPercentage;
           bar[1].classList.add("polka-dots-background");
           bar[1].innerHTML = `<strong>${okayPercentage}</strong> said okay!`;
         } else {
           // the user has selected okay
-          // the population selected not okay
+          // we have to highlight the not okay
 
           const notOkayPercentage = `${parseInt(
-            (1 - differences[index][0]) * 100
+            (1 - globalData[differences[index][1]]) * 100
           )}%`;
           bar[0].style.width = notOkayPercentage;
           bar[0].classList.add("polka-dots-background");
-          bar[0].innerHTML = `<strong>${notOkayPercentage}</strong> said okay!`;
+          bar[0].innerHTML = `<strong>${notOkayPercentage}</strong> said not okay.`;
 
-          bar[1].style.width = `${parseInt(differences[index][0] * 100)}%`;
+          bar[1].style.width = `${parseInt(
+            globalData[differences[index][1]] * 100
+          )}%`;
           bar[1].style.color = "lightgrey";
-          bar[1].innerText = "not okay.";
+          bar[1].innerText = "okay!";
         }
       }
     };
