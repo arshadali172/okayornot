@@ -4,37 +4,14 @@
     <title>OKAY / NOT?</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <style>
-    @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
+    @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700");
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      background-color: black;
-      color: white;
-      padding: 0 1.5rem;
-      align-items: center;
-      font-weight: 700;
-    }
-
-    .left-header-text {
-      width: 20%;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .right-header-text {
-      font-weight: 300;
-      font-size: 0.8rem;
-      letter-spacing: 0.1rem;
-      padding-bottom: 0.1rem;
-      border-bottom: 2px solid white;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
+    html {
+      width: 100%;
+      height: 100%;
     }
 
     body {
@@ -47,322 +24,122 @@
       -o-transition: opacity 2s ease-in;
       -ms-transition: opacity 2s ease-in;
       transition: opacity 2s ease-in;
-    }
-
-    .center-text {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80%;
-      letter-spacing: 0.1em;
-      padding: 0 10%;
+      flex-direction: row;
+      height: 100%;
     }
 
-    .okay-or-not {
-      color: grey;
+    .output {
+      /* height: 400px; */
     }
-
-    .options-to-select {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: flex-start;
-    }
-
-    .options-to-select > div:active {
-      background-color: #d8d8d8;
-    }
-
-    button {
-      font-family: "IBM Plex Mono";
-      font-family: inherit;
-      border-radius: 1000px;
-      color: white;
-      background-color: black;
-      height: 40px;
-      width: 60%;
-      margin: 7%;
-      font-size: 0.8rem;
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .main-content {
-      padding: 8%;
-    }
-    .okay-bar {
+    .output h1 {
+      font-size: 2rem;
+      font-family: IBM Plex Sans;
       width: 100%;
-      font-size: 1rem;
-      line-height: 2.5rem;
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: center;
-      border: 1px solid black;
+      letter-spacing: unset;
     }
 
-    .your-not-okay-number {
-      width: 80%;
-      text-align: center;
-      background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
-    }
-    .your-okay-number {
-      width: 20%;
-      text-align: center;
-      color: lightgrey;
-      font-weight: 300;
+    /* Cursor Styling */
+    .cursor::after {
+      content: "";
+      display: inline-block;
+      margin-left: 3px;
+      background-color: black;
+      animation-name: blink;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
     }
 
-    .majority-not-okay-number {
-      width: 70%;
-      text-align: center;
-      background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
+    h1.cursor::after {
+      height: 2rem;
+      width: 2px;
     }
-    .majority-okay-number {
-      width: 30%;
-      text-align: center;
-      color: lightgrey;
-      font-weight: 300;
+
+    p.cursor::after {
+      height: 13px;
+      width: 6px;
     }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      49% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
   </style>
   <body>
-    <header>
-      <p class="left-header-text" onclick="window.location.href='home.html'">
-        OKAY / NOT?
-      </p>
-      <p class="right-header-text">
-        <a href="story.html">SUBMIT YOUR STORY</a>
-      </p>
-    </header>
-    <div class="main-content">
-      <h1
-        style="
-      font-size: 2rem;
-      font-weight: 600;
-      margin-top: 0px;
-      margin-bottom: 0px;
+    <section
+      style="
+    background-color: black;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 10%;
     "
+    >
+      <svg
+        width="150px"
+        height="100px"
+        viewBox="0 0 156 94"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        Your Results
-      </h1>
-
-      <h3
+        <path
+          d="M14 38.6C9.33333 38.6 5.88333 37.0167 3.65 33.85C1.45 30.6833 0.35 26.25 0.35 20.55C0.35 14.85 1.45 10.4167 3.65 7.25C5.88333 4.08333 9.33333 2.5 14 2.5C18.6667 2.5 22.1 4.08333 24.3 7.25C26.5333 10.4167 27.65 14.85 27.65 20.55C27.65 26.25 26.5333 30.6833 24.3 33.85C22.1 37.0167 18.6667 38.6 14 38.6ZM14 32.55C16.1333 32.55 17.6 31.7667 18.4 30.2C19.2333 28.6 19.65 26.3833 19.65 23.55V17.5C19.65 14.7 19.2333 12.5167 18.4 10.95C17.6 9.35 16.1333 8.55 14 8.55C11.8667 8.55 10.3833 9.35 9.55 10.95C8.75 12.5167 8.35 14.7 8.35 17.5V23.6C8.35 26.4 8.75 28.6 9.55 30.2C10.3833 31.7667 11.8667 32.55 14 32.55ZM45.4805 23.45L42.3805 27.8V38H34.8805V3.1H42.3805V17.7H42.7805L46.5805 11.9L52.7305 3.1H61.1305L50.6805 17.85L61.6305 38H53.1805L45.4805 23.45ZM85.7109 38L83.5109 29.6H73.9609L71.8109 38H64.2109L73.6609 3.1H84.2609L93.7109 38H85.7109ZM78.9609 10.35H78.5609L75.1609 23.55H82.3609L78.9609 10.35ZM107.691 38V25.65L96.6414 3.1H104.991L108.691 11.2L111.391 18.05H111.791L114.491 11.2L118.191 3.1H126.241L115.191 25.65V38H107.691ZM132.572 44.9L148.622 -2.5034e-06H155.272L139.222 44.9H132.572ZM9 69.8H8.45V93H2.05V58.1H11.05L19 81.3H19.55V58.1H25.95V93H16.95L9 69.8ZM46.4805 93.6C41.8138 93.6 38.3638 92.0167 36.1305 88.85C33.9305 85.6833 32.8305 81.25 32.8305 75.55C32.8305 69.85 33.9305 65.4167 36.1305 62.25C38.3638 59.0833 41.8138 57.5 46.4805 57.5C51.1471 57.5 54.5805 59.0833 56.7805 62.25C59.0138 65.4167 60.1305 69.85 60.1305 75.55C60.1305 81.25 59.0138 85.6833 56.7805 88.85C54.5805 92.0167 51.1471 93.6 46.4805 93.6ZM46.4805 87.55C48.6138 87.55 50.0805 86.7667 50.8805 85.2C51.7138 83.6 52.1305 81.3833 52.1305 78.55V72.5C52.1305 69.7 51.7138 67.5167 50.8805 65.95C50.0805 64.35 48.6138 63.55 46.4805 63.55C44.3471 63.55 42.8638 64.35 42.0305 65.95C41.2305 67.5167 40.8305 69.7 40.8305 72.5V78.6C40.8305 81.4 41.2305 83.6 42.0305 85.2C42.8638 86.7667 44.3471 87.55 46.4805 87.55ZM82.7109 64.25V93H75.2109V64.25H65.1609V58.1H92.7609V64.25H82.7109Z"
+          fill="white"
+        />
+      </svg>
+      <div
         style="
+      color: white;
       font-size: 1rem;
-      line-height: 2em;
-      font-weight: 400;
+      font-family: IBM Plex Mono;
+      padding-top: 2rem;
       "
       >
-        These results are compared against people who have taken the test, and
-        is not definitive.
-      </h3>
-
+        Encouraging constructive conversations about race. We'll show you
+        statements or scenarios, and you tell us if they are okay or not. You'll
+        then see how your responses compare to others.
+      </div>
       <div
         style="
-        font-size: 1rem; 
-        font-weight: 400; 
-        line-height: 2.5rem; 
-        font-family: IBM Plex Mono;"
+      color: white;
+      font-size: 0.7rem;
+      padding-top: 1rem;
+      font-style: italic;
+      "
       >
-        You felt that:
+        Experience currently only available on mobile
       </div>
-
-      <div class="okay-bar">
-        <div class="your-not-okay-number"><strong>80%</strong> not okay.</div>
-        <div class="your-okay-number">
-          okay!
-        </div>
+    </section>
+    <section
+      style="
+    width: 40%;
+    padding: 5%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+    align-items: center;
+    "
+    >
+      <div class="output" id="output">
+        <h1 class="cursor"></h1>
+        <p></p>
       </div>
-
-      <div
-        style="
-        font-size: 1rem; 
-        font-weight: 400; 
-        line-height: 2.5rem;
-        font-family: IBM Plex Mono;"
-      >
-        Majority felt that:
-      </div>
-
-      <div class="okay-bar">
-        <div class="majority-not-okay-number">
-          <strong>70%</strong> not okay.
-        </div>
-        <div class="majority-okay-number">
-          okay!
-        </div>
-      </div>
-
-      <div
-        style="
-      padding-top: 2rem; 
-      padding-bottom: 2rem;"
-      >
-        <hr style="border: 0.5px solid #d8d8d8;" />
-      </div>
-
-      <h1
-        style="
-      font-size: 2rem;
-      font-weight: 600;
-      margin-top: 0px;
-      margin-bottom: 0px;"
-      >
-        Top 3 Disagreements
-      </h1>
-
-      <h3
-        style="
-      font-size: 1rem;
-      line-height: 2em;
-      font-weight: 400;
-      margin-bottom: 1rem;"
-      >
-        These are the statements you differed most from the majority.
-      </h3>
-
-      <div
-        style="
-        font-size: 1rem; 
-        font-weight: 400; 
-        padding-bottom: 1rem; 
-        padding: 5%; 
-        border: 1px solid black;"
-      >
-        <div style="font-family: IBM Plex Mono">
-          Speaking in Malay when there is a non-Malay speaking person present in
-          the group
-        </div>
-        <img src="minus-horizontal-straight-line.png" height="40px" />
-        <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> okay!</strong>
-        </div>
-        <div
-          style="width: 100%;
-          line-height: 2rem;
-          font-size: .7rem;
-      display: flex;
-      justify-content: center;
-      margin: auto;"
-        >
-          <div
-            style="
-        width: 70%;
-        background-color: lightgrey;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            <strong>80% </strong>not okay.
-          </div>
-          <div
-            style="      
-        width: 30%;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            okay!
-          </div>
-        </div>
-      </div>
-
-      <div
-        style="
-        font-size: 1rem; 
-        font-weight: 400; 
-        padding-bottom: 1rem; 
-        padding: 5%; 
-        border: 1px solid black;"
-      >
-        <div style="font-family: IBM Plex Mono">
-          You’re not like most Indians I meet.
-        </div>
-        <img src="minus-horizontal-straight-line.png" height="40px" />
-        <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> not okay.</strong>
-        </div>
-        <div
-          style="width: 100%;
-          line-height: 2rem;
-          font-size: .7rem;
-      display: flex;
-      justify-content: center;
-      margin: auto;"
-        >
-          <div
-            style="
-        width: 30%;
-        background-color: lightgrey;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            not okay.
-          </div>
-          <div
-            style="      
-        width: 70%;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            <strong>70% </strong>okay!
-          </div>
-        </div>
-      </div>
-
-      <div
-        style="
-        font-size: 1rem; 
-        font-weight: 400; 
-        padding-bottom: 1rem; 
-        padding: 5%; 
-        border: 1px solid black;"
-      >
-        <div style="font-family: IBM Plex Mono">
-          "Because we are a meritocracy, all races have an equal chance of
-          succeeding at life"
-        </div>
-        <img src="minus-horizontal-straight-line.png" height="40px" />
-        <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> not okay.</strong>
-        </div>
-        <div
-          style="width: 100%;
-          line-height: 2rem;
-          font-size: .7rem;
-      display: flex;
-      justify-content: center;
-      margin: auto;"
-        >
-          <div
-            style="
-        width: 30%;
-        background-color: lightgrey;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            not okay.
-          </div>
-          <div
-            style="      
-        width: 70%;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            <strong>70% </strong>okay!
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align: center;">
-        <button onclick="window.location.href='story.html'">
-          SUBMIT YOUR STORY
-        </button>
-      </div>
-    </div>
+    </section>
   </body>
   <script>
     function mobilecheck() {
@@ -385,5 +162,103 @@
         window.location.href = "home.html";
       }
     };
+    // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
+    var i = 0,
+      a = 0,
+      isBackspacing = false,
+      isParagraph = false;
+
+    // Typerwrite text content. Use a pipe to indicate the start of the second line "|".
+    var textArray = [
+      "You have a Singapore Passport? Oh, but you’re not really Singaporean.",
+      "If you see a Malay man driving an expensive car, he is probably the chauffeur.",
+      "I will not rent my house to Indians or PRCs.",
+      "Singapore is a Chinese-majority nation.",
+      "Your math is not bad for a Malay."
+    ];
+
+    // Speed (in milliseconds) of typing.
+    var speedForward = 50, //Typing Speed
+      speedWait = 3000, // Wait between typing and backspacing
+      speedBetweenLines = 5000, //Wait between first and second lines
+      speedBackspace = 10; //Backspace Speed
+
+    //Run the loop
+    typeWriter("output", textArray);
+
+    function typeWriter(id, ar) {
+      var element = $("#" + id),
+        aString = ar[a],
+        eHeader = element.children("h1"), //Header element
+        eParagraph = element.children("p"); //Subheader element
+
+      // Determine if animation should be typing or backspacing
+      if (!isBackspacing) {
+        // If full string hasn't yet been typed out, continue typing
+        if (i < aString.length) {
+          // If character about to be typed is a pipe, switch to second line and continue.
+          if (aString.charAt(i) == "|") {
+            isParagraph = true;
+            eHeader.removeClass("cursor");
+            eParagraph.addClass("cursor");
+            i++;
+            setTimeout(function() {
+              typeWriter(id, ar);
+            }, speedBetweenLines);
+
+            // If character isn't a pipe, continue typing.
+          } else {
+            // Type header or subheader depending on whether pipe has been detected
+            if (!isParagraph) {
+              eHeader.text(eHeader.text() + aString.charAt(i));
+            } else {
+              eParagraph.text(eParagraph.text() + aString.charAt(i));
+            }
+            i++;
+            setTimeout(function() {
+              typeWriter(id, ar);
+            }, speedForward);
+          }
+
+          // If full string has been typed, switch to backspace mode.
+        } else if (i == aString.length) {
+          isBackspacing = true;
+          setTimeout(function() {
+            typeWriter(id, ar);
+          }, speedWait);
+        }
+
+        // If backspacing is enabled
+      } else {
+        // If either the header or the paragraph still has text, continue backspacing
+        if (eHeader.text().length > 0 || eParagraph.text().length > 0) {
+          // If paragraph still has text, continue erasing, otherwise switch to the header.
+          if (eParagraph.text().length > 0) {
+            eParagraph.text(
+              eParagraph.text().substring(0, eParagraph.text().length - 1)
+            );
+          } else if (eHeader.text().length > 0) {
+            eParagraph.removeClass("cursor");
+            eHeader.addClass("cursor");
+            eHeader.text(
+              eHeader.text().substring(0, eHeader.text().length - 1)
+            );
+          }
+          setTimeout(function() {
+            typeWriter(id, ar);
+          }, speedBackspace);
+
+          // If neither head or paragraph still has text, switch to next quote in array and start typing.
+        } else {
+          isBackspacing = false;
+          i = 0;
+          isParagraph = false;
+          a = (a + 1) % ar.length; //Moves to next position in array, always looping back to 0
+          setTimeout(function() {
+            typeWriter(id, ar);
+          }, 500);
+        }
+      }
+    }
   </script>
 </html>
