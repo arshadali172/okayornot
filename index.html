@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
@@ -479,6 +478,7 @@
     </div>
   </body>
   <script>
+    const answers = [];
     // JavaScript Document
     document.addEventListener("DOMContentLoaded", function(event) {
       function stackedCards() {
@@ -693,6 +693,7 @@
             transformUi(-1000, 0, 0, topObj); //Move topOverlay
             resetOverlayLeft();
           }
+          answers.push("F");
           currentPosition = currentPosition + 1;
           updateUi();
           currentElement();
@@ -708,7 +709,7 @@
             transformUi(1000, 0, 0, topObj); //Move topOverlay
             resetOverlayRight();
           }
-
+          answers.push("T");
           currentPosition = currentPosition + 1;
           updateUi();
           currentElement();
@@ -717,7 +718,6 @@
         function incrementCounter() {
           const currValue = document.getElementById("counter").innerText;
           const number = parseInt(currValue.split("/")[0]);
-          console.log(countElements());
           document.getElementById("counter").innerText = `${number + 1}/15`;
         }
         //Remove transitions from all elements to be moved in each swipe movement to improve perfomance of stacked cards.
@@ -873,8 +873,12 @@
             );
           } else {
             document.body.style.opacity = 0;
+            const queryParams = answers
+              .map((el, index) => `${index}=${el}`)
+              .join("&");
+
             setTimeout(function() {
-              window.location.href = "almost_done.html";
+              window.location.href = `almost_done.html?${queryParams}`;
             }, 2500);
           }
         }

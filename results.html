@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
@@ -132,6 +132,12 @@
       color: lightgrey;
       font-weight: 300;
     }
+    .polka-dots-background {
+      background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
+        radial-gradient(#aaaaaa 20%, transparent 20%);
+      background-position: 0 0, 2px 2px;
+      background-size: 4px 4px;
+    }
   </style>
   <body>
     <header>
@@ -176,7 +182,9 @@
       </div>
 
       <div class="okay-bar">
-        <div class="your-not-okay-number"><strong>80%</strong> not okay.</div>
+        <div class="your-not-okay-number">
+          <strong id="your-not-okay-percent">80%</strong> not okay.
+        </div>
         <div class="your-okay-number">
           okay!
         </div>
@@ -194,7 +202,7 @@
 
       <div class="okay-bar">
         <div class="majority-not-okay-number">
-          <strong>70%</strong> not okay.
+          <strong id="majority-not-okay-percent">70%</strong> not okay.
         </div>
         <div class="majority-okay-number">
           okay!
@@ -237,44 +245,27 @@
         padding: 5%; 
         border: 1px solid black;"
       >
-        <div style="font-family: IBM Plex Mono">
+        <div style="font-family: IBM Plex Mono" id="question-1">
           Speaking in Malay when there is a non-Malay speaking person present in
           the group
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> okay!</strong>
+          <i>You said: </i>
+          <strong id="question-1-your-choice"></strong>
         </div>
         <div
           style="width: 100%;
           line-height: 2rem;
           font-size: .7rem;
-      display: flex;
-      justify-content: center;
-      margin: auto;
-      border: 1px solid black;
-      "
+          display: flex;
+          justify-content: center;
+          margin: auto;
+          border: 1px solid black;"
+          id="question-1-majority"
         >
-          <div
-            style="
-        width: 80%;
-        text-align: center;
-        background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;"
-          >
-            <strong>80% </strong>not okay.
-          </div>
-          <div
-            style="      
-        width: 20%;
-        text-align: center;
-        color: lightgrey;
-        "
-          >
-            okay!
-          </div>
+          <div style="text-align: center;"></div>
+          <div style="text-align: center;"></div>
         </div>
       </div>
 
@@ -286,12 +277,13 @@
         padding: 5%; 
         border: 1px solid black;"
       >
-        <div style="font-family: IBM Plex Mono">
+        <div style="font-family: IBM Plex Mono" id="question-2">
           You’re not like most Indians I meet.
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> not okay.</strong>
+          <i>You said: </i>
+          <strong id="question-2-your-choice"></strong>
         </div>
         <div
           style="width: 100%;
@@ -301,28 +293,10 @@
       justify-content: center;
       margin: auto;
       border: 1px solid black;"
+          id="question-2-majority"
         >
-          <div
-            style="
-        width: 30%;
-        text-align: center;
-        color: lightgrey;
-      "
-          >
-            not okay.
-          </div>
-          <div
-            style="      
-        width: 70%;
-        text-align: center;
-        background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
-        "
-          >
-            <strong>70% </strong>okay!
-          </div>
+          <div style="text-align: center;"></div>
+          <div style="text-align: center;"></div>
         </div>
       </div>
 
@@ -334,13 +308,14 @@
         padding: 5%; 
         border: 1px solid black;"
       >
-        <div style="font-family: IBM Plex Mono">
+        <div style="font-family: IBM Plex Mono" id="question-3">
           Because we are a meritocracy, all races have an equal chance of
           succeeding at life
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> not okay.</strong>
+          <i>You said: </i>
+          <strong id="question-3-your-choice"></strong>
         </div>
         <div
           style="width: 100%;
@@ -350,28 +325,10 @@
       justify-content: center;
       margin: auto;
       border: 1px solid black;"
+          id="question-3-majority"
         >
-          <div
-            style="
-        width: 30%;
-        text-align: center;
-        color: lightgrey;
-        "
-          >
-            not okay.
-          </div>
-          <div
-            style="      
-        width: 70%;
-        text-align: center;
-        background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
-        "
-          >
-            <strong>70% </strong>okay!
-          </div>
+          <div style="text-align: center;"></div>
+          <div style="text-align: center;"></div>
         </div>
       </div>
 
@@ -398,10 +355,150 @@
       })(navigator.userAgent || navigator.vendor || window.opera);
       return check;
     }
-    window.onload = function() {
+    window.onload = async function() {
       if (!mobilecheck()) {
-        console.log("we have to redirect you!");
         window.location.href = "landing_page.html";
+      }
+      let overallAverage = (
+        await axios.get(
+          "https://sheets.googleapis.com/v4/spreadsheets/14TPV9siUhh8HKwYfE6ueD0Tx9Knn48D8C4btdM1eu1A/values/Analytics!B1?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+        )
+      ).data.values[0][0];
+      overallAverage = parseInt(overallAverage * 100);
+
+      document.getElementsByClassName(
+        "majority-not-okay-number"
+      )[0].style.width = `${1 - overallAverage}%`;
+      document.getElementsByClassName(
+        "majority-okay-number"
+      )[0].style.width = `${overallAverage}%`;
+
+      if (overallAverage < 0.15) {
+        document.getElementsByClassName("majority-okay-number")[0].innerText =
+          "";
+      }
+      document.getElementById("majority-not-okay-percent").innerText = `${100 -
+        overallAverage}%`;
+
+      const queryParams = new URLSearchParams(window.location.search.substr(1));
+      let yourTotal = 0;
+      for (let [index, value] of queryParams) {
+        if (value === "T") {
+          yourTotal += 1;
+        }
+      }
+      const yourAverage = ((1.0 * yourTotal) / 15).toFixed(2);
+
+      if (yourAverage < 0.15) {
+        document.getElementsByClassName("your-okay-number")[0].innerText = "";
+      }
+      document.getElementsByClassName(
+        "your-not-okay-number"
+      )[0].style.width = `${(1 - yourAverage) * 100}%`;
+      document.getElementsByClassName(
+        "your-okay-number"
+      )[0].style.width = `${yourAverage * 100}%`;
+      document.getElementById("your-not-okay-percent").innerText = `${(1 -
+        yourAverage) *
+        100}%`;
+
+      console.log({ yourAverage, overallAverage });
+
+      const answer = await axios.get(
+        "https://sheets.googleapis.com/v4/spreadsheets/14TPV9siUhh8HKwYfE6ueD0Tx9Knn48D8C4btdM1eu1A/values/Analytics!B4:P4?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+      );
+
+      globalData = answer.data.values[0];
+
+      const differences = [];
+      for (let [index, value] of queryParams) {
+        const oneOrZero = value === "T" ? 1 : 0;
+        differences.push([
+          Math.abs(oneOrZero - parseFloat(globalData[index])),
+          index,
+          value
+        ]);
+      }
+      differences.sort(function(a, b) {
+        return b[0] - a[0]; // sort in descending order right now
+      });
+      console.log(differences);
+
+      const questions = [
+        "It's better if you stay away from the Mainland Chinese, if not later you also catch coronavirus",
+        "You're pretty accomplished for a Malay. What did you do differently?",
+        "The minority groups are quite sensitive about race. They should just relax",
+        "We should prioritise translating this brochure into Chinese as it would cost too much to translate this into Tamil and Malay",
+        "Speaking in Mandarin when there is a non-Mandarin speaking person present in the group",
+        "Chinese-preferred for this job",
+        "Not my fault if the other person takes offense when I didn't intend to be racist!",
+        "Speaking in Malay when there is a non-Malay speaking person present in the group",
+        "You really Singaporean meh? You don't look like it",
+        "I bet the Nasi Padang stall is charging me more because I'm not Malay",
+        "You're not like most Indians I meet",
+        "My Chinese friends gauge their success by their material wealth",
+        "Eating with Malays is usually difficult because we need to find Halal food",
+        "I don't want my children to marry someone of another race",
+        "Because we are a meritocracy, all races have an equal chance of succeeding at life"
+      ];
+      document.getElementById("question-1").innerText =
+        questions[differences[0][1]];
+      document.getElementById("question-2").innerText =
+        questions[differences[1][1]];
+      document.getElementById("question-3").innerText =
+        questions[differences[2][1]];
+
+      console.log(differences[0][2] == "T");
+      document.getElementById("question-1-your-choice").innerText =
+        differences[0][2] == "T" ? "okay!" : "not okay.";
+      document.getElementById("question-2-your-choice").innerText =
+        differences[1][2] == "T" ? "okay!" : "not okay.";
+      document.getElementById("question-3-your-choice").innerText =
+        differences[2][2] == "T" ? "okay!" : "not okay.";
+
+      for (const [question, index] of [
+        ["question-1-majority", 0],
+        ["question-2-majority", 1],
+        ["question-3-majority", 2]
+      ]) {
+        const bar = document.getElementById(question).children;
+        if (differences[index][2] == "F") {
+          // this means that the user has selected not okay
+          // the population has selected okay
+
+          // so the surprising information is in the okay percentage, which we must show to the user, and make background properly
+
+          // differences[index] => [0.84, "4", "F"]
+          // majority percentage that said okay, index of question, and what you said (not okay, in this case)
+          bar[0].style.width = `${parseInt(
+            (1 - globalData[differences[index][1]]) * 100
+          )}%`;
+          bar[0].style.color = "lightgrey";
+          bar[0].innerText = "not okay.";
+
+          const okayPercentage = `${parseInt(
+            globalData[differences[index][1]] * 100
+          )}%`;
+          bar[1].style.width = okayPercentage;
+          bar[1].classList.add("polka-dots-background");
+          bar[1].innerHTML = `<strong>${okayPercentage}</strong> said okay!`;
+        } else {
+          // the user has selected okay
+          // we have to highlight the not okay
+
+          const notOkayPercentage = `${parseInt(
+            (1 - globalData[differences[index][1]]) * 100
+          )}%`;
+          bar[0].style.width = notOkayPercentage;
+          bar[0].classList.add("polka-dots-background");
+          bar[0].innerHTML = `<strong>${notOkayPercentage}</strong> said not okay.`;
+
+          bar[1].style.width = `${parseInt(
+            globalData[differences[index][1]] * 100
+          )}%`;
+          bar[1].style.color = "lightgrey";
+          bar[1].innerText = "okay!";
+        }
       }
     };
   </script>
