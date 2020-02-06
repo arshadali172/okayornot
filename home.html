@@ -86,6 +86,30 @@
       text-align: center;
       line-height: 100px;
       border-radius: 2px;
+      -webkit-transition: visibility 0.5s linear;
+      -moz-transition: visibility 0.5s linear;
+      -o-transition: visibility 0.5s linear;
+      -ms-transition: visibility 0.5s linear;
+      transition: visibility 0.5s linear;
+      opacity: 1;
+    }
+
+    .box {
+      display: block;
+    }
+
+    .box-hidden {
+      display: none;
+    }
+
+    /* ensure box is displayed block during the transition  */
+    .box-transition.box-hidden {
+      display: block;
+      opacity: 0;
+    }
+
+    .box-transition {
+      transition: opacity 1s ease;
     }
 
     .output {
@@ -170,15 +194,26 @@
         </a>
       </div>
     </section>
-    <div class="toaster" id="toaster">
+    <div class="toaster box" id="toaster">
       Your story was successfully submitted. Thank you.
     </div>
   </body>
   <script>
     window.onload = function checkToDisplayToaster() {
       if (window.location.search.includes("submitted")) {
-        console.log("we shoudl display a toaster right now");
         document.getElementById("toaster").style.display = "block";
+
+        const box = document.getElementsByClassName("box")[0];
+
+        box.classList.add("box-transition");
+        box.clientWidth; // force layout to ensure the now display: block and opacity: 0 values are taken into account when the CSS transition starts.
+
+        box.classList.remove("box-hidden");
+
+        setTimeout(() => {
+          box.classList.add("box-transition");
+          box.classList.add("box-hidden");
+        }, 1000);
       }
     };
     // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.

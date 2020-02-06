@@ -263,7 +263,7 @@
         OKAY / NOT?
       </p>
       <p class="right-header-text">
-        <a href="index.html">SUBMIT YOUR STORY</a>
+        <a href="story.html">SUBMIT YOUR STORY</a>
       </p>
     </header>
     <section>
@@ -446,7 +446,10 @@
         </div>
       </div>
     </section>
-    <div style="color: grey; text-align: center; font-size: 35px; font-weight: 500;" id='counter'>
+    <div
+      style="color: grey; text-align: center; font-size: 35px; font-weight: 500;"
+      id="counter"
+    >
       1/15
     </div>
     <div class="global-actions">
@@ -703,10 +706,10 @@
           incrementCounter();
         }
         function incrementCounter() {
-          const currValue = document.getElementById("counter").innerText
-          const number = parseInt(currValue.split('/')[0])
-          console.log(countElements())
-          document.getElementById("counter").innerText = `${number+1}/15`
+          const currValue = document.getElementById("counter").innerText;
+          const number = parseInt(currValue.split("/")[0]);
+          console.log(countElements());
+          document.getElementById("counter").innerText = `${number + 1}/15`;
         }
         //Remove transitions from all elements to be moved in each swipe movement to improve perfomance of stacked cards.
         function removeNoTransition() {
