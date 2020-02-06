@@ -143,6 +143,8 @@
         To view the results, please provide us with some information so we can
         aggregate the responses.
       </h3>
+      <script>var submitted=false;</script>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location.href='results.html';}"></iframe>
       <form id="test" action="https://docs.google.com/forms/d/e/1FAIpQLScDRFTsh0R8uKBzVhnXVN2CCnbVHx-NorwkYVAX3-M-nvywQA/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
         <h4>
           Age
@@ -224,7 +226,7 @@
           </label>
         </section>
         <div style="text-align: center; padding-bottom: 50px;">
-          <button onclick="window.location.href='results.html'" type="submit">
+          <button type="submit">
             Submit and View Results
           </button>
         </div>
