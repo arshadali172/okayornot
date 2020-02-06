@@ -3,6 +3,7 @@
   <head>
     <title>OKAY / NOT?</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
@@ -12,24 +13,23 @@
       justify-content: space-between;
       background-color: black;
       color: white;
-      padding: 0 50px;
+      padding: 0 1.5rem;
       align-items: center;
       font-weight: 700;
     }
 
     .left-header-text {
       width: 20%;
-      font-size: 3.5em;
+      font-size: 1rem;
       font-weight: 600;
-      margin: 30px 0;
     }
 
     .right-header-text {
       font-weight: 300;
-      font-size: 2.5em;
-      letter-spacing: 0.1em;
-      padding-bottom: 10px;
-      border-bottom: 8px solid white;
+      font-size: 0.8rem;
+      letter-spacing: 0.1rem;
+      padding-bottom: 0.1rem;
+      border-bottom: 2px solid white;
     }
 
     a {
@@ -39,11 +39,9 @@
 
     body {
       font-family: "IBM Plex Sans", sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.05em;
+      font-size: 10px;
       margin: 0;
       overflow-x: hidden;
-      height: 100vh;
       -webkit-transition: opacity 2s ease-in;
       -moz-transition: opacity 2s ease-in;
       -o-transition: opacity 2s ease-in;
@@ -76,12 +74,13 @@
 
     button {
       font-family: inherit;
-      border-radius: 50px;
+      border-radius: 1000px;
       color: white;
       background-color: black;
-      height: 100px;
+      height: 40px;
       width: 60%;
-      font-size: 3em;
+      margin: 7%;
+      font-size: .8rem;
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -92,8 +91,9 @@
     }
     .okay-bar {
       width: 100%;
-      font-size: 26px;
-      line-height: 55px;
+      font-size: 1rem;
+      line-height: 2.5rem;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: center;
     }
@@ -133,7 +133,7 @@
     <div class="main-content">
       <h1
         style="
-      font-size: 6em;
+      font-size: 2rem;
       font-weight: 600;
       margin-top: 0px;
       margin-bottom: 0px;
@@ -144,10 +144,9 @@
 
       <h3
         style="
-      font-size: 2.3em;
+      font-size: 1rem;
       line-height: 2em;
       font-weight: 400;
-      margin-bottom: 50px;
       "
       >
         These results are compared against people who have taken the test, and
@@ -155,7 +154,11 @@
       </h3>
 
       <div
-        style="font-size: 12px; font-weight: 400; line-height: 80px; font-family: IBM Plex Mono;"
+        style="
+        font-size: 1rem; 
+        font-weight: 400; 
+        line-height: 2.5rem; 
+        font-family: IBM Plex Mono;"
       >
         You felt that:
       </div>
@@ -168,13 +171,11 @@
       </div>
 
       <div
-        style="font-size: 12px; font-weight: 400; font-family: IBM Plex Mono;"
-      >
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </div>
-
-      <div
-        style="font-size: 12px; font-weight: 400; line-height: 80px; font-family: IBM Plex Mono;"
+        style="
+        font-size: 1rem; 
+        font-weight: 400; 
+        line-height: 2.5rem;
+        font-family: IBM Plex Mono;"
       >
         Majority felt that:
       </div>
@@ -188,45 +189,53 @@
         </div>
       </div>
 
-      <div style="padding-top: 100px; padding-bottom: 100px;">
+      <div
+        style="
+      padding-top: 2rem; 
+      padding-bottom: 2rem;"
+      >
         <hr style="border: 0.5px solid #d8d8d8;" />
       </div>
 
       <h1
         style="
-      font-size: 6em;
+      font-size: 2rem;
       font-weight: 600;
       margin-top: 0px;
-      margin-bottom: 0px;
-    "
+      margin-bottom: 0px;"
       >
         Top 3 Disagreements
       </h1>
 
       <h3
         style="
-      font-size: 2.3em;
+      font-size: 1rem;
       line-height: 2em;
       font-weight: 400;
-      margin-bottom: 50px;
-      "
+      margin-bottom: 1rem;"
       >
         These are the statements you differed most from the majority.
       </h3>
+
       <div
-        style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
+        style="
+        font-size: 1rem; 
+        font-weight: 400; 
+        padding-bottom: 1rem; 
+        padding: 5%; 
+        border: 1px solid black;"
       >
         <div style="font-family: IBM Plex Mono">
           Don't go sun-tanning so much, later become dark your face not nice.
         </div>
-        <img src="minus-horizontal-straight-line.png" height="60px" />
-        <div style="padding-bottom: 30px;">
+        <img src="minus-horizontal-straight-line.png" height="40px" />
+        <div style="padding-bottom: 1rem;">
           <i>You said: </i> <strong> okay!</strong>
         </div>
         <div
           style="width: 100%;
-      font-size: 26px;
-      line-height: 55px;
+          line-height: 2rem;
+          font-size: .7rem;
       display: flex;
       justify-content: center;
       margin: auto;"
@@ -250,79 +259,96 @@
           </div>
         </div>
       </div>
+
+
       <div
-        style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
+        style="
+        font-size: 1rem; 
+        font-weight: 400; 
+        padding-bottom: 1rem; 
+        padding: 5%; 
+        border: 1px solid black;"
       >
         <div style="font-family: IBM Plex Mono">
           You’re not like most Indians I meet.
         </div>
-        <img src="minus-horizontal-straight-line.png" height="60px" />
-        <div style="padding-bottom: 30px;">
+        <img src="minus-horizontal-straight-line.png" height="40px" />
+        <div style="padding-bottom: 1rem;">
           <i>You said: </i> <strong> not okay.</strong>
         </div>
         <div
           style="width: 100%;
-        font-size: 26px;
-        line-height: 55px;
-        display: flex;
-        justify-content: center;
-        margin: auto;"
-        >
-          <div
-            style="width: 30%;
-          text-align: center;
-          border: 1px solid black;"
-          >
-            not okay.
-          </div>
-          <div
-            style="      width: 70%;
-          text-align: center;
-          background-color: lightgrey;
-          border: 1px solid black;"
-          >
-            <strong>70% </strong>okay!
-          </div>
-        </div>
-      </div>
-      <div
-        style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
-      >
-        <div style="font-family: IBM Plex Mono">
-          There’s no such thing as Chinese privilege.
-        </div>
-        <img src="minus-horizontal-straight-line.png" height="60px" />
-        <div style="padding-bottom: 30px;">
-          <i>You said: </i> <strong> not okay.</strong>
-        </div>
-        <div
-          style="width: 100%;
-      font-size: 26px;
-      line-height: 55px;
+          line-height: 2rem;
+          font-size: .7rem;
       display: flex;
       justify-content: center;
       margin: auto;"
         >
           <div
-            style="width: 30%;
-        text-align: center;
-        border: 1px solid black;"
-          >
-            not okay.
-          </div>
-          <div
             style="
-            width: 70%;
-        text-align: center;
+        width: 30%;
         background-color: lightgrey;
+        text-align: center;
         border: 1px solid black;"
           >
-            <strong>70% </strong>okay!
-          </div>
+          not okay.
+        </div>
+          <div
+            style="      
+        width: 70%;
+        text-align: center;
+        border: 1px solid black;"
+          >
+          <strong>70% </strong>okay!
+        </div>
         </div>
       </div>
 
-      <div style="text-align: center; padding-bottom: 50px; padding-top: 50px;">
+
+      <div
+        style="
+        font-size: 1rem; 
+        font-weight: 400; 
+        padding-bottom: 1rem; 
+        padding: 5%; 
+        border: 1px solid black;"
+      >
+        <div style="font-family: IBM Plex Mono">
+          There’s no such thing as Chinese privilege.
+        </div>
+        <img src="minus-horizontal-straight-line.png" height="40px" />
+        <div style="padding-bottom: 1rem;">
+          <i>You said: </i> <strong> not okay.</strong>
+        </div>
+        <div
+          style="width: 100%;
+          line-height: 2rem;
+          font-size: .7rem;
+      display: flex;
+      justify-content: center;
+      margin: auto;"
+        >
+          <div
+            style="
+        width: 30%;
+        background-color: lightgrey;
+        text-align: center;
+        border: 1px solid black;"
+          >
+          not okay.
+        </div>
+          <div
+            style="      
+        width: 70%;
+        text-align: center;
+        border: 1px solid black;"
+          >
+          <strong>70% </strong>okay!
+        </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
         <button onclick="window.location.href='story.html'">
           SHARE YOUR STORY
         </button>
