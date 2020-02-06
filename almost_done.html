@@ -150,7 +150,7 @@
         name="hidden_iframe"
         id="hidden_iframe"
         style="display:none;"
-        onload="if(submitted) {window.location.href='results.html';}"
+        onload="if(submitted) {window.location.href=`results.html${window.location.search}`;}"
       ></iframe>
       <form
         id="test"
@@ -242,6 +242,7 @@
             Landed
           </label>
         </section>
+        <div id="inject-hidden-fields" style="display: none;"></div>
         <div style="text-align: center; padding-bottom: 50px;">
           <button type="submit">
             Submit and View Results
@@ -324,6 +325,36 @@
     window.onload = function() {
       if (!mobilecheck()) {
         window.location.href = "landing_page.html";
+      }
+      const queryParams = new URLSearchParams(window.location.search.substr(1));
+
+      const googleFormIds = [
+        "entry.1939416306",
+        "entry.1809833554",
+        "entry.1613540406",
+        "entry.1407492897",
+        "entry.1993925438",
+        "entry.1677156231",
+        "entry.1602032685",
+        "entry.463718818",
+        "entry.620080572",
+        "entry.916895559",
+        "entry.852833409",
+        "entry.146489563",
+        "entry.832397747",
+        "entry.97999612",
+        "entry.1810632325"
+      ];
+
+      for (let [index, value] of queryParams) {
+        // inject the hidden form field
+        const el = document.createElement("input");
+        el.display = "none";
+        el.id = googleFormIds[index];
+        el.name = googleFormIds[index];
+        el.value = value === "T" ? 1 : 0;
+        el.type = "text";
+        document.getElementById("inject-hidden-fields").appendChild(el);
       }
     };
   </script>

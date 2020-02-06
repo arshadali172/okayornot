@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
@@ -175,7 +176,9 @@
       </div>
 
       <div class="okay-bar">
-        <div class="your-not-okay-number"><strong>80%</strong> not okay.</div>
+        <div class="your-not-okay-number">
+          <strong id="your-not-okay-percent">80%</strong> not okay.
+        </div>
         <div class="your-okay-number">
           okay!
         </div>
@@ -193,7 +196,7 @@
 
       <div class="okay-bar">
         <div class="majority-not-okay-number">
-          <strong>70%</strong> not okay.
+          <strong id="majority-not-okay-percent">70%</strong> not okay.
         </div>
         <div class="majority-okay-number">
           okay!
@@ -236,13 +239,13 @@
         padding: 5%; 
         border: 1px solid black;"
       >
-        <div style="font-family: IBM Plex Mono">
+        <div style="font-family: IBM Plex Mono" id="question-1">
           Speaking in Malay when there is a non-Malay speaking person present in
           the group
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> okay!</strong>
+          <i>You said: </i> <strong id="question-1-your-choice"> okay!</strong>
         </div>
         <div
           style="width: 100%;
@@ -285,12 +288,13 @@
         padding: 5%; 
         border: 1px solid black;"
       >
-        <div style="font-family: IBM Plex Mono">
+        <div style="font-family: IBM Plex Mono" id="question-2">
           You’re not like most Indians I meet.
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> not okay.</strong>
+          <i>You said: </i>
+          <strong id="question-2-your-choice"> not okay.</strong>
         </div>
         <div
           style="width: 100%;
@@ -333,13 +337,14 @@
         padding: 5%; 
         border: 1px solid black;"
       >
-        <div style="font-family: IBM Plex Mono">
+        <div style="font-family: IBM Plex Mono" id="question-3">
           Because we are a meritocracy, all races have an equal chance of
           succeeding at life
         </div>
         <img src="minus-horizontal-straight-line.png" height="40px" />
         <div style="padding-bottom: 1rem;">
-          <i>You said: </i> <strong> not okay.</strong>
+          <i>You said: </i>
+          <strong id="question-3-your-choice"> not okay.</strong>
         </div>
         <div
           style="width: 100%;
@@ -397,11 +402,110 @@
       })(navigator.userAgent || navigator.vendor || window.opera);
       return check;
     }
-    window.onload = function() {
+    window.onload = async function() {
       if (!mobilecheck()) {
-        console.log("we have to redirect you!");
         window.location.href = "landing_page.html";
       }
+      let overallAverage = (
+        await axios.get(
+          "https://sheets.googleapis.com/v4/spreadsheets/1T-cHUr6EeRChsbO5u68sqXRfMMww_b4AujnnKb3g06s/values/Analytics!B1?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+        )
+      ).data.values[0][0];
+      overallAverage = parseInt(overallAverage * 100);
+
+      document.getElementsByClassName(
+        "majority-not-okay-number"
+      )[0].style.width = `${1 - overallAverage}%`;
+      document.getElementsByClassName(
+        "majority-okay-number"
+      )[0].style.width = `${overallAverage}%`;
+
+      if (overallAverage < 0.15) {
+        document.getElementsByClassName("majority-okay-number")[0].innerText =
+          "";
+      }
+      document.getElementById("majority-not-okay-percent").innerText = `${100 -
+        overallAverage}%`;
+
+      const queryParams = new URLSearchParams(window.location.search.substr(1));
+      let yourTotal = 0;
+      for (let [index, value] of queryParams) {
+        if (value === "T") {
+          yourTotal += 1;
+        }
+      }
+      const yourAverage = ((1.0 * yourTotal) / 15).toFixed(2);
+
+      if (yourAverage < 0.15) {
+        document.getElementsByClassName("your-okay-number")[0].innerText = "";
+      }
+      document.getElementsByClassName(
+        "your-not-okay-number"
+      )[0].style.width = `${(1 - yourAverage) * 100}%`;
+      document.getElementsByClassName(
+        "your-okay-number"
+      )[0].style.width = `${yourAverage * 100}%`;
+      document.getElementById("your-not-okay-percent").innerText = `${(1 -
+        yourAverage) *
+        100}%`;
+
+      console.log({ yourAverage, overallAverage });
+
+      const answer = await axios.get(
+        "https://sheets.googleapis.com/v4/spreadsheets/1T-cHUr6EeRChsbO5u68sqXRfMMww_b4AujnnKb3g06s/values/Analytics!B4:P4?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+      );
+
+      globalData = answer.data.values[0];
+      console.log(globalData);
+
+      const differences = [];
+      for (let [index, value] of queryParams) {
+        const oneOrZero = value === "T" ? 1 : 0;
+        differences.push([
+          Math.abs(oneOrZero - parseFloat(globalData[index])),
+          index,
+          value
+        ]);
+      }
+      console.log(differences);
+      differences.sort(function(a, b) {
+        return b[0] - a[0];
+      });
+      // sorted in descending order right now
+
+      const questions = [
+        "It's better if you stay away from the Mainland Chinese, if not later you also catch coronavirus",
+        "You're pretty accomplished for a Malay. What did you do differently?",
+        "The minority groups are quite sensitive about race. They should just relax",
+        "We should prioritise translating this brochure into Chinese as it would cost too much to translate this into Tamil and Malay",
+        "Speaking in Mandarin when there is a non-Mandarin speaking person present in the group",
+        "Chinese-preferred for this job",
+        "Not my fault if the other person takes offense when I didn't intend to be racist!",
+        "Speaking in Malay when there is a non-Malay speaking person present in the group",
+        "You really Singaporean meh? You don't look like it",
+        "I bet the Nasi Padang stall is charging me more because I'm not Malay",
+        "You're not like most Indians I meet",
+        "My Chinese friends gauge their success by their material wealth",
+        "Eating with Malays is usually difficult because we need to find Halal food",
+        "I don't want my children to marry someone of another race",
+        "Because we are a meritocracy, all races have an equal chance of succeeding at life"
+      ];
+      document.getElementById("question-1").innerText =
+        questions[differences[0][1]];
+      document.getElementById("question-2").innerText =
+        questions[differences[1][1]];
+      document.getElementById("question-3").innerText =
+        questions[differences[2][1]];
+
+      document.getElementById("question-1-your-choice").innerText =
+        questions[differences[0][2]] == "T" ? "okay." : "not okay!";
+      document.getElementById("question-2-your-choice").innerText =
+        questions[differences[1][2]] == "T" ? "okay." : "not okay!";
+      document.getElementById("question-3-your-choice").innerText =
+        questions[differences[2][2]] == "T" ? "okay." : "not okay!";
+
+      id = "question-1-your-choice";
+      console.log(differences);
     };
   </script>
 </html>
