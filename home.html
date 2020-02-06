@@ -75,6 +75,7 @@
 
     .toaster {
       position: absolute;
+      justify-content: space-around;
       width: 80%;
       height: 100px;
       display: none;
@@ -92,10 +93,6 @@
       -ms-transition: visibility 0.5s linear;
       transition: visibility 0.5s linear;
       opacity: 1;
-    }
-
-    .box {
-      display: block;
     }
 
     .box-hidden {
@@ -194,26 +191,30 @@
         </a>
       </div>
     </section>
-    <div class="toaster box" id="toaster">
-      Your story was successfully submitted. Thank you.
+    <div class="toaster" id="toaster">
+      <span>
+        Your story was successfully submitted. Thank you.
+      </span>
+      <div>
+        <img src="bx-x 1.png" width="30px" height="30px" />
+      </div>
     </div>
   </body>
   <script>
     window.onload = function checkToDisplayToaster() {
       if (window.location.search.includes("submitted")) {
-        document.getElementById("toaster").style.display = "block";
+        const toaster = document.getElementById("toaster");
+        toaster.style.display = "flex";
 
-        const box = document.getElementsByClassName("box")[0];
+        toaster.classList.add("box-transition");
+        toaster.clientWidth; // force layout to ensure the now display: block and opacity: 0 values are taken into account when the CSS transition starts.
 
-        box.classList.add("box-transition");
-        box.clientWidth; // force layout to ensure the now display: block and opacity: 0 values are taken into account when the CSS transition starts.
-
-        box.classList.remove("box-hidden");
+        toaster.classList.remove("box-hidden");
 
         setTimeout(() => {
-          box.classList.add("box-transition");
-          box.classList.add("box-hidden");
-        }, 1000);
+          toaster.classList.add("box-transition");
+          toaster.classList.add("box-hidden");
+        }, 2000);
       }
     };
     // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
