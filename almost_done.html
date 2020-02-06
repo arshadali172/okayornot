@@ -87,7 +87,7 @@
       justify-content: flex-start;
       padding-bottom: 70px;
     }
-    .options-to-select > div {
+    .options-to-select > label {
       border: 1px solid black;
       font-size: 2.5em;
       width: 33%;
@@ -97,6 +97,10 @@
 
     .options-to-select > div:active {
       background-color: #d8d8d8;
+    }
+    
+    input[type="radio"] { 
+      display: none;
     }
 
     h4 {
@@ -139,74 +143,92 @@
         To view the results, please provide us with some information so we can
         aggregate the responses.
       </h3>
-      <h4>
-        Age
-      </h4>
-      <section class="options-to-select">
-        <div class="turn-grey-on-select-age">
-          < 18
+      <form id="test" action="https://docs.google.com/forms/d/e/1FAIpQLScDRFTsh0R8uKBzVhnXVN2CCnbVHx-NorwkYVAX3-M-nvywQA/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+        <h4>
+          Age
+        </h4>
+        <section class="options-to-select">
+          <label class="turn-grey-on-select-age">
+            <input type="radio" name="entry.256962379" value="< 18">
+            < 18
+          </label>
+          <label class="turn-grey-on-select-age">
+            <input type="radio" name="entry.256962379" value="18-29">
+            18-29
+          </label>
+          <label class="turn-grey-on-select-age">
+            <input type="radio" name="entry.256962379" value="30-39">
+            30-39
+          </label>
+          <label class="turn-grey-on-select-age">
+            <input type="radio" name="entry.256962379" value="40-49">
+            40-49
+          </label>
+          <label class="turn-grey-on-select-age">
+            <input type="radio" name="entry.256962379" value="50-59">
+            50-59
+          </label>
+          <label class="turn-grey-on-select-age">
+            <input type="radio" name="entry.256962379" value="> 60">
+            > 60
+          </label>
+        </section>
+        <h4>
+          Race
+        </h4>
+        <section class="options-to-select">
+          <label class="turn-grey-on-select-race">
+            <input type="radio" name="entry.1246792391" value="Chinese">
+            Chinese
+          </label>
+          <label class="turn-grey-on-select-race">
+            <input type="radio" name="entry.1246792391" value="Malay">
+            Malay
+          </label>
+          <label class="turn-grey-on-select-race">
+            <input type="radio" name="entry.1246792391" value="Indian">
+            Indian
+          </label>
+          <label class="turn-grey-on-select-race">
+            <input type="radio" name="entry.1246792391" value="Others">
+            Others
+          </label>
+        </section>
+        <h4>
+          Housing Type
+        </h4>
+        <section class="options-to-select">
+          <label class="turn-grey-on-select-house">
+            <input type="radio" name="entry.2096127659" value="1 room HDB">
+            1 room HDB
+          </label>
+          <label class="turn-grey-on-select-house">
+            <input type="radio" name="entry.2096127659" value="2-3 room HDB">
+            2-3 room HDB
+          </label>
+          <label class="turn-grey-on-select-house">
+            <input type="radio" name="entry.2096127659" value="4-5 room HDB">
+            4-5 room HDB
+          </label>
+          <label class="turn-grey-on-select-house">
+            <input type="radio" name="entry.2096127659" value="Executive Condo">
+            Executive Condo
+          </label>
+          <label class="turn-grey-on-select-house">
+            <input type="radio" name="entry.2096127659" value="Condo">
+            Condo
+          </label>
+          <label class="turn-grey-on-select-house">
+            <input type="radio" name="entry.2096127659" value="Landed">
+            Landed
+          </label>
+        </section>
+        <div style="text-align: center; padding-bottom: 50px;">
+          <button onclick="window.location.href='results.html'" type="submit">
+            Submit and View Results
+          </button>
         </div>
-        <div class="turn-grey-on-select-age">
-          18-29
-        </div>
-        <div class="turn-grey-on-select-age">
-          30-39
-        </div>
-        <div class="turn-grey-on-select-age">
-          40-49
-        </div>
-        <div class="turn-grey-on-select-age">
-          50-59
-        </div>
-        <div class="turn-grey-on-select-age">
-          > 60
-        </div>
-      </section>
-      <h4>
-        Race
-      </h4>
-      <section class="options-to-select">
-        <div class="turn-grey-on-select-race">
-          Chinese
-        </div>
-        <div class="turn-grey-on-select-race">
-          Malay
-        </div>
-        <div class="turn-grey-on-select-race">
-          Indian
-        </div>
-        <div class="turn-grey-on-select-race">
-          Others
-        </div>
-      </section>
-      <h4>
-        Housing Type
-      </h4>
-      <section class="options-to-select">
-        <div class="turn-grey-on-select-house">
-          1 room HDB
-        </div>
-        <div class="turn-grey-on-select-house">
-          2-3 room HDB
-        </div>
-        <div class="turn-grey-on-select-house">
-          4-5 room HDB
-        </div>
-        <div class="turn-grey-on-select-house">
-          Executive Condo
-        </div>
-        <div class="turn-grey-on-select-house">
-          Condo
-        </div>
-        <div class="turn-grey-on-select-house">
-          Landed
-        </div>
-      </section>
-      <div style="text-align: center; padding-bottom: 50px;">
-        <button onclick="window.location.href='results.html'">
-          Submit and View Results
-        </button>
-      </div>
+      </form>
     </div>
   </body>
   <script>
@@ -216,15 +238,16 @@
       els[i].addEventListener("click", activeRace, false);
     }
     function activeRace() {
-      console.log("activated!")
-      if (this.style.backgroundColor == "rgb(216, 216, 216)") {
-        this.style.backgroundColor = "";
-      } else {
-        var els = document.getElementsByClassName("turn-grey-on-select-race");
-        for (var i = 0; i < els.length; ++i) {
-          els[i].style.backgroundColor = "";
+      if (this === event.target) {
+        if (this.style.backgroundColor == "rgb(216, 216, 216)") {
+          this.style.backgroundColor = "";
+        } else {
+          var els = document.getElementsByClassName("turn-grey-on-select-race");
+          for (var i = 0; i < els.length; ++i) {
+            els[i].style.backgroundColor = "";
+          }
+          this.style.backgroundColor = "#d8d8d8";
         }
-        this.style.backgroundColor = "#d8d8d8";
       }
     }
     var els = document.getElementsByClassName("turn-grey-on-select-age");
@@ -232,15 +255,17 @@
       els[i].addEventListener("click", activeAge, true);
     }
     function activeAge() {
-      if (this.style.backgroundColor == "rgb(216, 216, 216)") {
-        console.log("fix");
-        this.style.backgroundColor = "";
-      } else {
-        var els = document.getElementsByClassName("turn-grey-on-select-age");
-        for (var i = 0; i < els.length; ++i) {
-          els[i].style.backgroundColor = "";
+      if (this === event.target) {
+        if (this.style.backgroundColor === "rgb(216, 216, 216)") {
+          console.log("fix");
+          this.style.backgroundColor = "";
+        } else {
+          var els = document.getElementsByClassName("turn-grey-on-select-age");
+          for (var i = 0; i < els.length; ++i) {
+            els[i].style.backgroundColor = "";
+          }
+          this.style.backgroundColor = "#d8d8d8";
         }
-        this.style.backgroundColor = "#d8d8d8";
       }
     }
     var els = document.getElementsByClassName("turn-grey-on-select-house");
@@ -248,14 +273,16 @@
       els[i].addEventListener("click", activeHousing, true);
     }
     function activeHousing() {
-      if (this.style.backgroundColor == "rgb(216, 216, 216)") {
-        this.style.backgroundColor = "";
-      } else {
-        var els = document.getElementsByClassName("turn-grey-on-select-house");
-        for (var i = 0; i < els.length; ++i) {
-          els[i].style.backgroundColor = "";
+      if (this === event.target) {
+        if (this.style.backgroundColor == "rgb(216, 216, 216)") {
+          this.style.backgroundColor = "";
+        } else {
+          var els = document.getElementsByClassName("turn-grey-on-select-house");
+          for (var i = 0; i < els.length; ++i) {
+            els[i].style.backgroundColor = "";
+          }
+          this.style.backgroundColor = "#d8d8d8";
         }
-        this.style.backgroundColor = "#d8d8d8";
       }
     }
     function mobilecheck() {
