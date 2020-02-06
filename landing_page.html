@@ -381,9 +381,8 @@
       return check;
     }
     window.onload = function() {
-      if (!mobilecheck()) {
-        console.log("we have to redirect you!");
-        window.location.href = "landing_page.html";
+      if (mobilecheck()) {
+        window.location.href = "home.html";
       }
     };
   </script>
