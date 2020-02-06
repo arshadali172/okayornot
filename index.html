@@ -365,7 +365,7 @@
               </div>
               <img src="grey-horizontal-straight-line.png" width="100px" />
               <p class="okay-or-not">
-                Is the above statement okay or not?
+                Is this okay or not?
               </p>
             </div>
 
@@ -398,7 +398,7 @@
               </div>
               <img src="grey-horizontal-straight-line.png" width="100px" />
               <p class="okay-or-not">
-                Is this okay?
+                Is this okay or not?
               </p>
             </div>
 
@@ -686,7 +686,6 @@
           updateUi();
           currentElement();
           setActiveHidden();
-          incrementCounter();
         }
 
         //Swipe active card to right.
@@ -703,7 +702,6 @@
           updateUi();
           currentElement();
           setActiveHidden();
-          incrementCounter();
         }
         function incrementCounter() {
           const currValue = document.getElementById("counter").innerText;
@@ -853,6 +851,8 @@
 
         function setActiveHidden() {
           if (!(currentPosition >= maxElements)) {
+            incrementCounter();
+
             listElNodesObj[currentPosition - 1].classList.remove(
               "stackedcards-active"
             );
