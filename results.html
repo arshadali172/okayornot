@@ -132,6 +132,12 @@
       color: lightgrey;
       font-weight: 300;
     }
+    .polka-dots-background {
+      background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
+        radial-gradient(#aaaaaa 20%, transparent 20%);
+      background-position: 0 0, 2px 2px;
+      background-size: 4px 4px;
+    }
   </style>
   <body>
     <header>
@@ -251,32 +257,14 @@
           style="width: 100%;
           line-height: 2rem;
           font-size: .7rem;
-      display: flex;
-      justify-content: center;
-      margin: auto;
-      border: 1px solid black;
-      "
+          display: flex;
+          justify-content: center;
+          margin: auto;
+          border: 1px solid black;"
+          id="question-1-majority"
         >
-          <div
-            style="
-        width: 80%;
-        text-align: center;
-        background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;"
-          >
-            <strong>80% </strong>not okay.
-          </div>
-          <div
-            style="      
-        width: 20%;
-        text-align: center;
-        color: lightgrey;
-        "
-          >
-            okay!
-          </div>
+          <div style="text-align: center;"></div>
+          <div style="text-align: center;"></div>
         </div>
       </div>
 
@@ -304,28 +292,10 @@
       justify-content: center;
       margin: auto;
       border: 1px solid black;"
+          id="question-2-majority"
         >
-          <div
-            style="
-        width: 30%;
-        text-align: center;
-        color: lightgrey;
-      "
-          >
-            not okay.
-          </div>
-          <div
-            style="      
-        width: 70%;
-        text-align: center;
-        background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
-        "
-          >
-            <strong>70% </strong>okay!
-          </div>
+          <div style="text-align: center;"></div>
+          <div style="text-align: center;"></div>
         </div>
       </div>
 
@@ -354,28 +324,10 @@
       justify-content: center;
       margin: auto;
       border: 1px solid black;"
+          id="question-3-majority"
         >
-          <div
-            style="
-        width: 30%;
-        text-align: center;
-        color: lightgrey;
-        "
-          >
-            not okay.
-          </div>
-          <div
-            style="      
-        width: 70%;
-        text-align: center;
-        background-image: radial-gradient(#aaaaaa 20%, transparent 20%),
-        radial-gradient(#aaaaaa 20%, transparent 20%);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
-        "
-          >
-            <strong>70% </strong>okay!
-          </div>
+          <div style="text-align: center;"></div>
+          <div style="text-align: center;"></div>
         </div>
       </div>
 
@@ -408,7 +360,7 @@
       }
       let overallAverage = (
         await axios.get(
-          "https://sheets.googleapis.com/v4/spreadsheets/1T-cHUr6EeRChsbO5u68sqXRfMMww_b4AujnnKb3g06s/values/Analytics!B1?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+          "https://sheets.googleapis.com/v4/spreadsheets/14TPV9siUhh8HKwYfE6ueD0Tx9Knn48D8C4btdM1eu1A/values/Analytics!B1?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
         )
       ).data.values[0][0];
       overallAverage = parseInt(overallAverage * 100);
@@ -452,7 +404,7 @@
       console.log({ yourAverage, overallAverage });
 
       const answer = await axios.get(
-        "https://sheets.googleapis.com/v4/spreadsheets/1T-cHUr6EeRChsbO5u68sqXRfMMww_b4AujnnKb3g06s/values/Analytics!B4:P4?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+        "https://sheets.googleapis.com/v4/spreadsheets/14TPV9siUhh8HKwYfE6ueD0Tx9Knn48D8C4btdM1eu1A/values/Analytics!B4:P4?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
       );
 
       globalData = answer.data.values[0];
@@ -467,11 +419,9 @@
           value
         ]);
       }
-      console.log(differences);
       differences.sort(function(a, b) {
-        return b[0] - a[0];
+        return b[0] - a[0]; // sort in descending order right now
       });
-      // sorted in descending order right now
 
       const questions = [
         "It's better if you stay away from the Mainland Chinese, if not later you also catch coronavirus",
@@ -498,14 +448,52 @@
         questions[differences[2][1]];
 
       document.getElementById("question-1-your-choice").innerText =
-        questions[differences[0][2]] == "T" ? "okay." : "not okay!";
+        questions[differences[0][2]] == "T" ? "okay!" : "not okay.";
       document.getElementById("question-2-your-choice").innerText =
-        questions[differences[1][2]] == "T" ? "okay." : "not okay!";
+        questions[differences[1][2]] == "T" ? "okay!" : "not okay.";
       document.getElementById("question-3-your-choice").innerText =
-        questions[differences[2][2]] == "T" ? "okay." : "not okay!";
+        questions[differences[2][2]] == "T" ? "okay!" : "not okay.";
 
-      id = "question-1-your-choice";
-      console.log(differences);
+      for (const [question, index] of [
+        ["question-1-majority", 0],
+        ["question-2-majority", 1],
+        ["question-3-majority", 2]
+      ]) {
+        console.log(question, index);
+        const bar = document.getElementById(question).children;
+        if (differences[index][2] == "F") {
+          // this means that the user has selected not okay
+          // the population has selected okay
+          // so the surprising information is in the okay percentage, which we must show to the user, and make background properly
+
+          // [0.84, "4", "F"]
+          // majority percentage that said okay, index of question, and what you said (not okay, in this case)
+          bar[0].style.width = `${parseInt(
+            (1 - differences[index][0]) * 100
+          )}%`;
+          bar[0].style.color = "lightgrey";
+          bar[0].innerText = "not okay.";
+
+          const okayPercentage = `${parseInt(differences[index][0] * 100)}%`;
+          bar[1].style.width = okayPercentage;
+          bar[1].classList.add("polka-dots-background");
+          bar[1].innerHTML = `<strong>${okayPercentage}</strong> said okay!`;
+        } else {
+          // the user has selected okay
+          // the population selected not okay
+
+          const notOkayPercentage = `${parseInt(
+            (1 - differences[index][0]) * 100
+          )}%`;
+          bar[0].style.width = notOkayPercentage;
+          bar[0].classList.add("polka-dots-background");
+          bar[0].innerHTML = `<strong>${notOkayPercentage}</strong> said okay!`;
+
+          bar[1].style.width = `${parseInt(differences[index][0] * 100)}%`;
+          bar[1].style.color = "lightgrey";
+          bar[1].innerText = "not okay.";
+        }
+      }
     };
   </script>
 </html>
