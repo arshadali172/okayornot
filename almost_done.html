@@ -3,6 +3,7 @@
   <head>
     <title>OKAY / NOT?</title>
     <meta charset="utf-8" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
@@ -208,9 +209,10 @@
     // MAKE THIS THING TOGGLE TODO
     var els = document.getElementsByClassName("turn-grey-on-select-race");
     for (var i = 0; i < els.length; ++i) {
-      els[i].addEventListener("click", activeRace, true);
+      els[i].addEventListener("click", activeRace, false);
     }
     function activeRace() {
+      console.log("activated!")
       if (this.style.backgroundColor == "rgb(216, 216, 216)") {
         this.style.backgroundColor = "";
       } else {
