@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OKAY / NOT?</title>
+    <meta charset="utf-8" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600,700&display=swap");
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      background-color: black;
+      color: white;
+      padding: 20px 50px;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      margin: 0;
+      overflow-x: hidden;
+      height: 100vh;
+      -webkit-transition: opacity 2s ease-in;
+      -moz-transition: opacity 2s ease-in;
+      -o-transition: opacity 2s ease-in;
+      -ms-transition: opacity 2s ease-in;
+      transition: opacity 2s ease-in;
+    }
+
+    .center-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80%;
+      letter-spacing: 0.1em;
+      padding: 0 10%;
+    }
+
+    .okay-or-not {
+      color: grey;
+    }
+
+    .left-header-text {
+      width: 20%;
+      font-size: 3.5em;
+      font-weight: 600;
+    }
+
+    .right-header-text {
+      font-weight: 300;
+      font-size: 2.5em;
+      letter-spacing: 0.1em;
+      padding-bottom: 10px;
+      border-bottom: 8px solid white;
+    }
+    .options-to-select {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    .options-to-select > div:active {
+      background-color: #d8d8d8;
+    }
+
+    button {
+      font-family: inherit;
+      border-radius: 50px;
+      color: white;
+      background-color: black;
+      height: 100px;
+      width: 60%;
+      font-size: 3em;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .main-content {
+      padding: 8%;
+    }
+    .okay-bar {
+      width: 100%;
+      font-size: 26px;
+      line-height: 55px;
+      display: flex;
+      justify-content: center;
+    }
+    .your-not-okay-number {
+      width: 80%;
+      background-color: lightgrey;
+      text-align: center;
+      border: 1px solid black;
+    }
+    .your-okay-number {
+      width: 20%;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    .majority-not-okay-number {
+      width: 70%;
+      background-color: lightgrey;
+      text-align: center;
+      border: 1px solid black;
+    }
+    .majority-okay-number {
+      width: 30%;
+      text-align: center;
+      border: 1px solid black;
+    }
+  </style>
+  <body>
+    <header>
+      <p class="left-header-text">
+        OKAY / NOT?
+      </p>
+      <p class="right-header-text">
+        <a href="index.html">SUBMIT YOUR STORY</a>
+      </p>
+    </header>
+    <div class="main-content">
+      <div
+        style="font-size: 50px; font-weight: 500; padding-top: 50px; padding-bottom: 20px;"
+      >
+        Your Results
+      </div>
+
+      <div style="font-size: 12px; font-weight: 400; padding-bottom: 40px;">
+        These results are compared against people who have taken the test, and
+        is not definitive.
+      </div>
+
+      <div
+        style="font-size: 12px; font-weight: 400; line-height: 80px; font-family: IBM Plex Mono;"
+      >
+        You felt that:
+      </div>
+
+      <div class="okay-bar">
+        <div class="your-not-okay-number"><strong>80%</strong> not okay.</div>
+        <div class="your-okay-number">
+          okay!
+        </div>
+      </div>
+
+      <div
+        style="font-size: 12px; font-weight: 400; font-family: IBM Plex Mono;"
+      >
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+
+      <div
+        style="font-size: 12px; font-weight: 400; line-height: 80px; font-family: IBM Plex Mono;"
+      >
+        Majority felt that:
+      </div>
+
+      <div class="okay-bar">
+        <div class="majority-not-okay-number">
+          <strong>70%</strong> not okay.
+        </div>
+        <div class="majority-okay-number">
+          okay!
+        </div>
+      </div>
+
+      <div
+        style="font-size: 50px; font-weight: 500; padding-top: 100px; padding-bottom: 20px;"
+      >
+        Top 3 Disagreements
+      </div>
+
+      <div style="font-size: 12px; font-weight: 400; padding-bottom: 40px;">
+        These are the statements you differed most from the majority.
+      </div>
+      <div
+        style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
+      >
+        <div style="font-family: IBM Plex Mono">
+          Don't go sun-tanning so much, later become dark your face not nice.
+        </div>
+        <img src="minus-horizontal-straight-line.png" height="60px" />
+        <div style="padding-bottom: 30px;">
+          <i>You said: </i> <strong> okay!</strong>
+        </div>
+        <div
+          style="width: 100%;
+      font-size: 26px;
+      line-height: 55px;
+      display: flex;
+      justify-content: center;
+      margin: auto;"
+        >
+          <div
+            style="
+        width: 70%;
+        background-color: lightgrey;
+        text-align: center;
+        border: 1px solid black;"
+          >
+            <strong>80% </strong>not okay.
+          </div>
+          <div
+            style="      
+        width: 30%;
+        text-align: center;
+        color: #C4C4C4;
+        border: 1px solid black;"
+          >
+            okay!
+          </div>
+        </div>
+      </div>
+      <div
+        style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
+      >
+        <div style="font-family: IBM Plex Mono">
+          You’re not like most Indians I meet.
+        </div>
+        <img src="minus-horizontal-straight-line.png" height="60px" />
+        <div style="padding-bottom: 30px;">
+          <i>You said: </i> <strong> not okay.</strong>
+        </div>
+        <div
+          style="width: 100%;
+        font-size: 26px;
+        line-height: 55px;
+        display: flex;
+        justify-content: center;
+        margin: auto;"
+        >
+          <div
+            style="width: 30%;
+          color: #C4C4C4;
+          text-align: center;
+          border: 1px solid black;"
+          >
+            not okay.
+          </div>
+          <div
+            style="      width: 70%;
+          text-align: center;
+          background-color: lightgrey;
+          border: 1px solid black;"
+          >
+            <strong>70% </strong>okay!
+          </div>
+        </div>
+      </div>
+      <div
+        style="font-size: 14px; font-weight: 400; padding-bottom: 40px; padding: 5%; border: 1px solid black; "
+      >
+        <div style="font-family: IBM Plex Mono">
+          There’s no such thing as Chinese privilege.
+        </div>
+        <img src="minus-horizontal-straight-line.png" height="60px" />
+        <div style="padding-bottom: 30px;">
+          <i>You said: </i> <strong> not okay.</strong>
+        </div>
+        <div
+          style="width: 100%;
+      font-size: 26px;
+      line-height: 55px;
+      display: flex;
+      justify-content: center;
+      margin: auto;"
+        >
+          <div
+            style="width: 30%;
+        color: #C4C4C4;
+        text-align: center;
+        border: 1px solid black;"
+          >
+            not okay.
+          </div>
+          <div
+            style="      width: 70%;
+        text-align: center;
+        background-color: lightgrey;
+        border: 1px solid black;"
+          >
+            <strong>70% </strong>okay!
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding-top: 100px;">
+        <button onclick="window.location.href='index.html'">
+          SHARE YOUR STORY
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -12,11 +12,6 @@
       width: 100%;
     }
 
-    body {
-      margin: 0px;
-      min-height: 100%;
-      width: 100%;
-    }
     header {
       display: flex;
       justify-content: space-between;
@@ -40,18 +35,21 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow-x: hidden;
       height: 100vh;
       -webkit-transition: opacity 2s ease-in;
       -moz-transition: opacity 2s ease-in;
       -o-transition: opacity 2s ease-in;
       -ms-transition: opacity 2s ease-in;
       transition: opacity 2s ease-in;
+      margin: 0px;
+      min-height: 100%;
+      width: 100%;
     }
 
     section {
       display: flex;
       justify-content: center;
+      width: 100%;
     }
 
     .no-transition {
@@ -264,7 +262,7 @@
         OKAY / NOT?
       </p>
       <p class="right-header-text">
-        <a href="https://go.gov.sg/not-okay">SUBMIT YOUR STORY</a>
+        <a href="index.html">SUBMIT YOUR STORY</a>
       </p>
     </header>
     <section>
@@ -274,7 +272,7 @@
           class="stackedcards stackedcards--animatable init"
         >
           <div class="stackedcards-container">
-            <div class="card-item">
+            <!-- <div class="card-item">
               <div class="center-text">
                 "It's better if you stay away from the China/Mainland Chinese,
                 if not later you also catch coronavirus"
@@ -408,7 +406,7 @@
               <p class="okay-or-not">
                 Is the above statement okay or not?
               </p>
-            </div>
+            </div> -->
 
             <div class="card-item">
               <div class="center-text">
@@ -829,14 +827,17 @@
             listElNodesObj[currentPosition - 1].classList.remove(
               "stackedcards-active"
             );
-            listElNodesObj[currentPosition - 1].classList.add(
-              "stackedcards-hidden"
-            );
+            listElNodesObj[currentPosition - 1].style.display = "none";
             listElNodesObj[currentPosition].classList.add(
               "stackedcards-active"
             );
           } else {
-            document.body.style.opacity = 0;
+            listElNodesObj[currentPosition - 1].style.display = "none";
+            listElNodesObj[currentPosition - 1].classList.remove(
+              "stackedcards-active"
+            );
+            
+            document.body.style.opacity = 0.5;
             setTimeout(function() {
               window.location.href = "almost_done.html";
             }, 2000);

@@ -79,7 +79,7 @@
     .options-to-select {
       display: flex;
       flex-wrap: wrap;
-      align-content: flex-start;
+      justify-content: flex-start;
     }
     .options-to-select > div {
       border: 1px solid black;
@@ -112,7 +112,7 @@
     }
 
     .main-content {
-      padding: 5%;
+      padding: 8%;
     }
   </style>
   <body>
@@ -121,7 +121,7 @@
         OKAY / NOT?
       </p>
       <p class="right-header-text">
-        <a href="https://go.gov.sg/not-okay">SUBMIT YOUR STORY</a>
+        <a href="index.html">SUBMIT YOUR STORY</a>
       </p>
     </header>
     <div class="main-content">
@@ -196,7 +196,9 @@
         </div>
       </section>
       <div style="text-align: center; padding-top: 100px;">
-        <button>Submit and View Results</button>
+        <button onclick="window.location.href='results.html'">
+          Submit and View Results
+        </button>
       </div>
     </div>
   </body>
