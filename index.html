@@ -827,16 +827,11 @@
             listElNodesObj[currentPosition - 1].classList.remove(
               "stackedcards-active"
             );
-            listElNodesObj[currentPosition - 1].style.display = "none";
+            // listElNodesObj[currentPosition - 1].style.display = "none";
             listElNodesObj[currentPosition].classList.add(
               "stackedcards-active"
             );
           } else {
-            listElNodesObj[currentPosition - 1].style.display = "none";
-            listElNodesObj[currentPosition - 1].classList.remove(
-              "stackedcards-active"
-            );
-            
             document.body.style.opacity = 0;
             setTimeout(function() {
               window.location.href = "almost_done.html";
