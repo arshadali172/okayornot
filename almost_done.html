@@ -94,10 +94,6 @@
       line-height: 4em;
     }
 
-    .options-to-select > div:active {
-      background-color: #d8d8d8;
-    }
-
     h4 {
       font-size: 1.8em;
       font-weight: 400;
@@ -118,9 +114,6 @@
 
     .main-content {
       padding: 8%;
-    }
-    .turn-grey-on-select {
-      font-size: 15px;
     }
   </style>
   <body>
@@ -144,22 +137,22 @@
         Age
       </h4>
       <section class="options-to-select">
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-age">
           < 18
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-age">
           18-29
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-age">
           30-39
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-age">
           40-49
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-age">
           50-59
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-age">
           > 60
         </div>
       </section>
@@ -167,16 +160,16 @@
         Race
       </h4>
       <section class="options-to-select">
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-race">
           Chinese
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-race">
           Malay
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-race">
           Indian
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-race">
           Others
         </div>
       </section>
@@ -184,22 +177,22 @@
         Housing Type
       </h4>
       <section class="options-to-select">
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-house">
           1 room HDB
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-house">
           2-3 room HDB
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-house">
           4-5 room HDB
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-house">
           Executive Condo
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-house">
           Condo
         </div>
-        <div class="turn-grey-on-select">
+        <div class="turn-grey-on-select-house">
           Landed
         </div>
       </section>
@@ -211,16 +204,52 @@
     </div>
   </body>
   <script>
-    var els = document.getElementsByClassName("turn-grey-on-select");
-
+    // MAKE THIS THING TOGGLE TODO
+    var els = document.getElementsByClassName("turn-grey-on-select-race");
     for (var i = 0; i < els.length; ++i) {
-      els[i].addEventListener("click", active, true);
+      els[i].addEventListener("click", activeRace, true);
     }
-    function active() {
-      console.log(this.style.backgroundColor);
+    function activeRace() {
       if (this.style.backgroundColor == "rgb(216, 216, 216)") {
         this.style.backgroundColor = "";
       } else {
+        var els = document.getElementsByClassName("turn-grey-on-select-race");
+        for (var i = 0; i < els.length; ++i) {
+          els[i].style.backgroundColor = "";
+        }
+        this.style.backgroundColor = "#d8d8d8";
+      }
+    }
+    var els = document.getElementsByClassName("turn-grey-on-select-age");
+    for (var i = 0; i < els.length; ++i) {
+      els[i].addEventListener("click", activeAge, true);
+    }
+    function activeAge() {
+      if (this.style.backgroundColor == "rgb(216, 216, 216)") {
+        console.log("fix");
+        this.style.backgroundColor = "";
+      } else {
+        var els = document.getElementsByClassName("turn-grey-on-select-age");
+        for (var i = 0; i < els.length; ++i) {
+          els[i].style.backgroundColor = "";
+        }
+        this.style.backgroundColor = "#d8d8d8";
+      }
+    }
+    var els = document.getElementsByClassName("turn-grey-on-select-house");
+    for (var i = 0; i < els.length; ++i) {
+      els[i].addEventListener("click", activeHousing, true);
+    }
+    function activeHousing() {
+      if (this.style.backgroundColor == "rgb(216, 216, 216)") {
+        this.style.backgroundColor = "";
+      } else {
+        var els = document.getElementsByClassName(
+          "turn-grey-on-select-house"
+        );
+        for (var i = 0; i < els.length; ++i) {
+          els[i].style.backgroundColor = "";
+        }
         this.style.backgroundColor = "#d8d8d8";
       }
     }
