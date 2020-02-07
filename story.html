@@ -99,6 +99,7 @@
         <a href="story.html">SUBMIT YOUR STORY</a>
       </p>
     </header>
+
     <section>
       <h1>
         Tell us your story
@@ -114,10 +115,29 @@
         Have you faced instances of casual racism in Singapore? Tell us about
         your encounter here.
       </h3>
-      <textarea name="user-story"></textarea>
-      <button onclick="window.location.href='home.html?story=submitted'">
-        Submit story
-      </button>
+
+      <script>
+        var submitted = false;
+      </script>
+      <iframe
+        name="hidden_iframe"
+        id="hidden_iframe"
+        style="display:none;"
+        onload="if(submitted) {window.location.href=`home.html?story=submitted`;}"
+      ></iframe>
+      <form
+        id="test"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScYC63woO3fKpAaGtXflQUG1-CiLyVJPOJeLeI7yrnrrR0xag/formResponse"
+        method="post"
+        target="hidden_iframe"
+        onsubmit="submitted=true;"
+      >
+        <textarea id="user-story" name="entry.175484041"></textarea>
+        <button type="submit">
+          Submit story
+        </button>
+      </form>
+
     </section>
   </body>
   <script>
