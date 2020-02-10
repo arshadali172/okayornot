@@ -362,8 +362,9 @@
       }
       let overallAverage = (
         await axios.get(
-          "https://sheets.googleapis.com/v4/spreadsheets/14TPV9siUhh8HKwYfE6ueD0Tx9Knn48D8C4btdM1eu1A/values/Analytics!B1?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+          "https://sheets.googleapis.com/v4/spreadsheets/1McnTD1iD7eW7v5ev6UXLdYLvygRXi2-2k7EZMVBiKuw/values/Analytics!B1?key=AIzaSyAAlxx_dLu1zOI5BwEzX8Mq2Cx1-uhbTUc"
         )
+
       ).data.values[0][0];
       overallAverage = parseInt(overallAverage * 100);
 
@@ -406,7 +407,7 @@
       console.log({ yourAverage, overallAverage });
 
       const answer = await axios.get(
-        "https://sheets.googleapis.com/v4/spreadsheets/14TPV9siUhh8HKwYfE6ueD0Tx9Knn48D8C4btdM1eu1A/values/Analytics!B4:P4?key=AIzaSyDy7d0iC0mJ121lgceHQSiT5ss96nLsoFw"
+        "https://sheets.googleapis.com/v4/spreadsheets/1McnTD1iD7eW7v5ev6UXLdYLvygRXi2-2k7EZMVBiKuw/values/Analytics!B4:P4?key=AIzaSyAAlxx_dLu1zOI5BwEzX8Mq2Cx1-uhbTUc"
       );
 
       globalData = answer.data.values[0];
